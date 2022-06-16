@@ -1,1 +1,1 @@
-web: gunicorn ext2.wsgi --log-file -
+web: gunicorn proyecto.wsgi --log-file -
