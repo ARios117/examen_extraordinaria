@@ -24,15 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 ALLOWED_HOSTS = ['afternoon-everglades-20078.herokuapp.com', '127.0.0.1']
 
-    SECRET_KEY = os.environ.get(
-            'DJANGO_SECRET_KEY',
-            'django-insecure--&-2e1!f-\
-            k87stby192i*h-k#p(^hyi_6sg=h6szicf3%!f1tp'
-        )
-    
-    DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+SECRET_KEY = os.environ.get(
+        'DJANGO_SECRET_KEY',
+        'django-insecure--&-2e1!f-\
+        k87stby192i*h-k#p(^hyi_6sg=h6szicf3%!f1tp'
+    )
 
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Application definition
