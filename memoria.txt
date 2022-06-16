@@ -1,0 +1,55 @@
+Para empezar creo el entorno virtual para poder trabajar.
+
+Creo el proyecto con el comando startproject y posteriormente entro en el para crear la aplicacion pedida con el comando startapp.
+
+Posteriormente modifico el fichero settings.py para adaptarlo al proyecto:
+- Realizo el import de os y dj_database_url
+- Añado en INSTALLED_APPS la aplicacion creada anteriormente.
+- En DIRS de TEMPLATES añado la direccion en la que se van a encontrar las plantillas './templates'
+- Configuro la base de datos de la siguiente forma: 
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+    if os.getenv('SQLITE', False):
+        DATABASES['default'] = {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+    else:
+        db_from_env = dj_database_url.config(
+                        default='postgres://alumnodb:alumnodb@localhost:5432/examen',
+                        conn_max_age=500)
+        DATABASES['default'].update(db_from_env)
+
+- Configuro el TIMEZONE: TIMEZONE = 'Europe/Madrid'
+
+Después añado dentro de urls.py los imports correspondietes y los paths de urlpatters necesarios para la urls de admin y de la aplicación.
+
+A continuación creo los modelos solicitados en el fichero models.py con los correspondientes campos.
+
+Añado en Admin.py dichos modelos para poder visualizarlos en la interfaz de administrador.
+
+Creo la plantilla dentro de la carpeta template.
+
+Modifico el Views.py y el context_dict para que guarde los valores que necesita para poder imprimirlos a traves de la plantilla proporcionada en el enunciado.
+
+En el fichero urls.py de la aplicacion añado el path de dicha plantilla.
+
+Creo la carpeta de management y la carpeta de commands en la que crearé el fichero poblar.py el cual modifico a continuación.
+
+Creo los modelos necesarios requeridos en el enunciado asegurandome de que al final de la vinculacion de los atributos se guarden (save()) correctamente.
+
+Después pueblo la base de datos con el comando python3 manage.py poblar y compruebo que todo esta correcto.
+
+Modifico el fichero tests.py creando los test solicitados. Ejecuto el comando python3 manage.py test aplicacion.tests
+
+Una vez todo está correcto modifico por última vez el fichero settings.py para adaptarlo a heroku:
+
+ALLOWED_HOSTS = ['psi-p3-mario-alex.herokuapp.com', '127.0.0.1']
+
+Por último creo un nuevo repositorio en github en donde subo todo el proyecto y posteriormente subo todo a heroku finalizando así el examen.

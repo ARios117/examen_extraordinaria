@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+Alquileres del cliente {{ cliente.nombre }}
+<table>
+<tr>
+<th> Tipo de bicicleta </th>
+<th> Fecha </th>
+<th> Hora comienzo</th>
+<th> Hora Fin</th>
+</tr>
+{% for alquiler in alquileres %}
+<tr>
+<td>{{ alquiler.bicicleta.tipo }}</td>
+<td>{{ alquiler.fecha }}</td>
+<td>{{ alquiler.horaComienzo }}</td>
+<td>{{ alquiler.horaFin }}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
